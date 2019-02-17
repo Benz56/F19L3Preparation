@@ -24,7 +24,7 @@ public class TextAnalyzer {
         Set<String> set = sorted ? new TreeSet<>() : new HashSet<>();
 
         try (Scanner scanner = new Scanner(file)) {
-            scanner.forEachRemaining((word) -> set.add(clean(word)));
+            scanner.forEachRemaining(word -> set.add(clean(word)));
         } catch (FileNotFoundException e) {
             System.out.println("Something went wrong when reading the file!");
         }
