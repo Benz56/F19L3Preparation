@@ -57,7 +57,7 @@ public class Person implements Comparable<Person> {
         System.out.println("\nsorted:\n" + list);
 
         Comparator<Person> comp = (o1, o2) -> {
-            return o1.heigth != o2.heigth ? o1.heigth < o2.heigth ? 1 : -1 : 0;
+            return o1.heigth != o2.heigth ? o1.heigth < o2.heigth ? -1 : 1 : 0;
         };
 
         Collections.sort(list, comp);
