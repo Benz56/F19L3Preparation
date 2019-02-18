@@ -59,7 +59,6 @@ public class TextAnalyzer {
         }
 
         return mapOfSets;
-
     }
 
     // Denne metode forsøger at fjerne alt 'snavs' fra en String,
