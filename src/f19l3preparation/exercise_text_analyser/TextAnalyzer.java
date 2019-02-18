@@ -2,6 +2,7 @@ package f19l3preparation.exercise_text_analyser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -54,6 +55,16 @@ public class TextAnalyzer {
 
         try (Scanner scanner = new Scanner(file)) {
             scanner.forEachRemaining(word -> mapOfSets.computeIfAbsent(clean(word).length(), key -> sorted ? new TreeSet<>() : new HashSet<>()).add(clean(word)));
+
+            // Mindre kompleks løsning:
+            /*while (scanner.hasNext()) {
+                String word = clean(scanner.next());
+                if (mapOfSets.containsKey(word.length())) {
+                    mapOfSets.get(word.length()).add(word);
+                } else {
+                    mapOfSets.put(word.length(), sorted ? new TreeSet<>(Arrays.asList(word)) : new HashSet<>(Arrays.asList(word)));
+                }
+            }*/
         } catch (FileNotFoundException e) {
             System.out.println("Something went wrong when reading the file!");
         }
