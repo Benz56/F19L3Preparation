@@ -9,6 +9,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class TextAnalyzer {
 
@@ -61,15 +64,9 @@ public class TextAnalyzer {
 
     // Denne metode forsøger at fjerne alt 'snavs' fra en String,
     // så kun bogstaver bevares og store gøres til små
+    // One-lined by Benz56 :P
     private String clean(String s) {
-        String r = "";
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (Character.isLetter(c)) {
-                r = r + c;
-            }
-        }
-        return r.toLowerCase();
+        return s.chars().flatMap(c -> Character.isLetter((char) c) ? IntStream.of(c) : IntStream.empty()).collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString().toLowerCase();
     }
 
     /**
